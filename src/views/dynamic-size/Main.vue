@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { Random } from 'mockjs';
 // @ts-ignore
-import VirtualList from 'vue3-virtual-scroll-list';
+import VirtualList from '@happyplum/virtual-list';
 
 import GithubCorner from '../../components/Corner.vue';
 import Introduction from '../../components/Introduction.vue';

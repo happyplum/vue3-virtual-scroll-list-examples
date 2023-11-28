@@ -8,12 +8,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@happyplum/virtual-list": "^0.0.1",
     "highlight.js": "^11.2.0",
     "milligram": "^1.4.1",
     "mockjs": "^1.1.0",
     "vue": "^3.2.41",
-    "vue-router": "^4.0.11",
-    "vue3-virtual-scroll-list": "^0.2.1"
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@types/mockjs": "^1.0.4",

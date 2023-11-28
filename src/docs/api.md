@@ -1,4 +1,4 @@
-# vue3-virtual-scroll-list
+# @happyplum/virtual-list
 
 ### Description
 
@@ -13,7 +13,7 @@
 ### Basic Useage
 
 ```
-npm install vue3-virtual-scroll-list
+npm install @happyplum/virtual-list
 ```
 
 ```vue
@@ -29,7 +29,7 @@ npm install vue3-virtual-scroll-list
 </template>
 
 <script setup lang="ts">
-import VirtualList from 'vue3-virtual-scroll-list';
+import VirtualList from '@happyplum/virtual-list';
 import Item from './Items.vue';
 
 const items = ref([{uid: 'unique_1', text: 'abc'}, {uid: 'unique_2', text: 'xyz'}]);

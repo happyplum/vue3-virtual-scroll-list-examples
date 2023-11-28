@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, nextTick } from 'vue';
 // @ts-ignore
-import VirtualList from 'vue3-virtual-scroll-list';
+import VirtualList from '@happyplum/virtual-list';
 import GithubCorner from '../../components/Corner.vue';
 import Item from './Item.vue';
 import Editor from './Editor.vue';
