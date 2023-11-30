@@ -64,6 +64,7 @@ function test(t) {
           class="list-dynamic scroll-touch"
           :data-key="'id'"
           :data-sources="items"
+          :keeps="12"
         >
           <template #default="{ data }">
             <div class="item-inner list-item-dynamic" @click="test(data)">
