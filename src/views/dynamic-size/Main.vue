@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Random } from 'mockjs';
+import { ref } from "vue";
+import { Random } from "mockjs";
 // @ts-ignore
-import VirtualList from '@happyplum/virtual-list';
+import VirtualList from "@happyplum/virtual-list";
 
-import GithubCorner from '../../components/Corner.vue';
-import Introduction from '../../components/Introduction.vue';
-import Tab from '../../components/Tab.vue';
-import CodeBlock from './Code.vue';
-import Item from './Item.vue';
-import { TAB_TYPE, DEFAULT_TAB } from '../../common/const';
-import getSentences from '../../common/sentences';
-import genUniqueId from '../../common/gen-unique-id';
+import GithubCorner from "../../components/Corner.vue";
+import Introduction from "../../components/Introduction.vue";
+import Tab from "../../components/Tab.vue";
+import CodeBlock from "./Code.vue";
+import Item from "./Item.vue";
+import { TAB_TYPE, DEFAULT_TAB } from "../../common/const";
+import getSentences from "../../common/sentences";
+import genUniqueId from "../../common/gen-unique-id";
 
 const isShowView = ref(DEFAULT_TAB === TAB_TYPE.VIEW);
 const onTabChange = (type: TAB_TYPE) => {
   isShowView.value = type === TAB_TYPE.VIEW;
 };
 
-const TOTAL_COUNT = 10000;
+const TOTAL_COUNT = 100;
 const DataItems = [];
 let count = TOTAL_COUNT;
 while (count--) {
@@ -27,7 +27,7 @@ while (count--) {
     index,
     name: Random.name(),
     id: genUniqueId(index),
-    desc: getSentences()
+    desc: getSentences(),
   });
 }
 
@@ -39,6 +39,10 @@ const items = ref<
     desc: string;
   }[]
 >(DataItems);
+
+function test(t) {
+  console.log(t);
+}
 </script>
 
 <template>
@@ -60,10 +64,17 @@ const items = ref<
           class="list-dynamic scroll-touch"
           :data-key="'id'"
           :data-sources="items"
-          :data-component="Item"
-          :estimate-size="80"
-          :item-class="'list-item-dynamic'"
-        />
+        >
+          <template #default="{ data }">
+            <div class="item-inner list-item-dynamic" @click="test(data)">
+              <div class="head">
+                <span class="index"># {{ data.index }}</span>
+                <span class="name">{{ data.name }}</span>
+              </div>
+              <div class="desc">{{ data.desc }}</div>
+            </div>
+          </template>
+        </VirtualList>
       </div>
 
       <CodeBlock v-show="!isShowView" />
@@ -85,6 +96,18 @@ const items = ref<
     padding: 1em;
     border-bottom: 1px solid;
     border-color: lightgray;
+  }
+  .item-inner {
+    .head {
+      font-weight: 500;
+    }
+    span:first-child {
+      margin-right: 1em;
+    }
+    .desc {
+      padding-top: 0.5em;
+      text-align: justify;
+    }
   }
 }
 </style>
